@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    /* Добавяме CSS за по-красив вид на часовника */
+    #txt {
+      font-family: 'Fantasy', serif;
+      color: #77DD77;
+      font-size: 48px;
+      text-align: center;
+      margin-top: 20%;
+    }
+    body {
+      background-color: #d84242;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body onload="startTime()">
+  <!-- onload е HTML атрибут, който указва, че когато страницата се зареди напълно, ще се изпълни функцията startTime(). 
+  Това гарантира, че часовникът започва да работи веднага след като страницата се зареди. -->
+
+  <h2>My First JavaScript Clock &#127813</h2>
+
+  <div id="txt"></div>
+  <!-- id="txt" дава уникален идентификатор на този <div>, -->
+  <!-- така че JavaScript кодът да може да го намери и да промени съдържанието му. -->
+
+  <script>
+    function startTime() {
+      const today = new Date();
+      let h = today.getHours(); // Променливата h съхранява текущия час.
+      let m = today.getMinutes();
+      let s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('txt').innerHTML = h + ":" + m + ":" + s;
+      setTimeout(startTime, 1000);
+    }
+
+    function checkTime(i) {
+      if (i < 10) {
+        i = "0" + i;
+      } // Добавя нула пред числа по-малки от 10.
+      return i;
+    }
+  </script>
+</body>
+</html>
